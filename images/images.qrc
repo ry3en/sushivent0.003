@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="images">
+    <file>search-50.png</file>
+    <file>sushi-64.png</file>
+    <file>edit-64.png</file>
+    <file>sushi-60.png</file>
+    <file>order-history-64.png</file>
+    <file>create-recipment-64.png</file>
+    <file>create-recipment-128.png</file>
+    <file>hikaru.png</file>
+    <file>hikaru.jpg</file>
+    <file>waves.jpg</file>
+    <file>sushi-16.png</file>
+  </qresource>
+</RCC>

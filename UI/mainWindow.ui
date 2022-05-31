@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1203</width>
+    <height>848</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1203</width>
+    <height>854</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>SushiDemo</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/sushi-60.png</normaloff>images/sushi-60.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1200</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1200</width>
+      <height>800</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(244, 249, 252);</string>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Triangular</enum>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="tab_ord">
+     <attribute name="title">
+      <string>Orden</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>971</width>
+        <height>771</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::DashLine</enum>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>161</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Numero de orden</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nombre de usuario</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Fecha y hora</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Numero de mesa</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Total</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Estado</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QToolButton" name="toolButton_pay">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>450</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
+      </property>
+      <property name="text">
+       <string>Pagar Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_edit">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>320</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
+      </property>
+      <property name="text">
+       <string>editar orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/edit-64.png</normaloff>:/images/images/edit-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_list">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>190</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
+      </property>
+      <property name="text">
+       <string>Ver ordenes</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/order-history-64.png</normaloff>:/images/images/order-history-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_add">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>60</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_his">
+     <attribute name="title">
+      <string>Historial</string>
+     </attribute>
+     <widget class="QToolButton" name="toolButton_edit_3">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>390</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)
+</string>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/edit-64.png</normaloff>:/images/images/edit-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_list_3">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>220</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_add_3">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>60</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_pay_3">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>580</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>990</x>
+        <y>10</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>username:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>1060</x>
+        <y>10</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>pepe</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listWidget">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>11</y>
+        <width>961</width>
+        <height>761</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_inv">
+     <attribute name="title">
+      <string>Inventario</string>
+     </attribute>
+     <widget class="QToolButton" name="toolButton_pay_4">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>580</y>
+        <width>131</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_edit_4">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>390</y>
+        <width>131</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/edit-64.png</normaloff>:/images/images/edit-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_add_4">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>60</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_list_4">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>220</y>
+        <width>131</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>971</width>
+        <height>771</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::DashLine</enum>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>242</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>id_item</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Categoria</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Unidad</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_men">
+     <attribute name="title">
+      <string>Menu</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>901</width>
+        <height>731</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_edit_2">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>390</y>
+        <width>131</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/edit-64.png</normaloff>:/images/images/edit-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_list_2">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>220</y>
+        <width>131</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_add_2">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>60</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>971</width>
+        <height>771</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::DashLine</enum>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>323</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>id_menu</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Descrpcion</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QToolButton" name="toolButton_pay_2">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>580</y>
+        <width>131</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Crear Orden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/images/images/create-recipment-64.png</normaloff>:/images/images/create-recipment-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1203</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menusesion">
+    <property name="title">
+     <string>inicio</string>
+    </property>
+    <addaction name="actionnueva_sesion"/>
+    <addaction name="actioncerrar_sesion"/>
+    <addaction name="actioncrear_cuenta"/>
+   </widget>
+   <addaction name="menusesion"/>
+  </widget>
+  <action name="actionNueva">
+   <property name="text">
+    <string>Nueva</string>
+   </property>
+  </action>
+  <action name="actionHistorial">
+   <property name="text">
+    <string>Historial</string>
+   </property>
+  </action>
+  <action name="actionVer">
+   <property name="text">
+    <string>Ver</string>
+   </property>
+  </action>
+  <action name="actionRegistro_nuevo">
+   <property name="text">
+    <string>Registro nuevo</string>
+   </property>
+  </action>
+  <action name="actionnueva_sesion">
+   <property name="text">
+    <string>nueva sesion</string>
+   </property>
+  </action>
+  <action name="actioncerrar_sesion">
+   <property name="text">
+    <string>cerrar sesion</string>
+   </property>
+  </action>
+  <action name="actioncrear_cuenta">
+   <property name="text">
+    <string>crear cuenta</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="images.qrc"/>
+  <include location="images/images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
