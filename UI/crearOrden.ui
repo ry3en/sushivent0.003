@@ -28,6 +28,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 15px;</string>
+   </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -51,11 +54,15 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
+   </property>
    <property name="text">
     <string/>
    </property>
    <property name="icon">
-    <iconset resource="images/images.qrc">
+    <iconset resource="../images/images.qrc">
      <normaloff>:/images/search-50.png</normaloff>:/images/search-50.png</iconset>
    </property>
   </widget>
@@ -68,31 +75,29 @@
      <height>281</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_finish">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>430</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Terminar</string>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 15px;
+</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_create">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>100</x>
      <y>430</y>
-     <width>161</width>
-     <height>31</height>
+     <width>371</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
    </property>
    <property name="text">
     <string>Crear</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -100,7 +105,7 @@
     <rect>
      <x>30</x>
      <y>20</y>
-     <width>121</width>
+     <width>101</width>
      <height>21</height>
     </rect>
    </property>
@@ -117,8 +122,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 15px;</string>
+   </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_ok">
    <property name="geometry">
     <rect>
      <x>177</x>
@@ -134,19 +142,36 @@
   <widget class="QLabel" name="label_user">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>20</y>
-     <width>71</width>
+     <x>430</x>
+     <y>30</y>
+     <width>101</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 15px;
+background-color:rgb(226, 230, 234)</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label_user_img">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>10</y>
+     <width>71</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/prefijoNuevo/samurai-60.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
  </widget>
  <resources>
-  <include location="images/images.qrc"/>
+  <include location="../images/images.qrc"/>
  </resources>
  <connections/>
 </ui>

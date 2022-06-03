@@ -278,6 +278,12 @@ class Ui_MainWindow(object):
         self.menusesion.addAction(self.actioncerrar_sesion)
         self.menusesion.addAction(self.actioncrear_cuenta)
         self.menuBar.addAction(self.menusesion.menuAction())
+        self.tableWidget.verticalHeader().setVisible(False)
+        self.tableWidget_2.verticalHeader().setVisible(False)
+        self.tableWidget_3.verticalHeader().setVisible(False)
+        self.tableWidget_4.verticalHeader().setVisible(False)
+        self.tableWidget_5.verticalHeader().setVisible(False)
+
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)

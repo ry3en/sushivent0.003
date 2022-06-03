@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="images">
+    <file>add-100.png</file>
+    <file>dining-room-100.png</file>
+    <file>inventory-100.png</file>
+    <file>ingredients-100.png</file>
     <file>search-50.png</file>
     <file>sushi-64.png</file>
     <file>edit-64.png</file>
@@ -11,5 +15,8 @@
     <file>hikaru.jpg</file>
     <file>waves.jpg</file>
     <file>sushi-16.png</file>
+  </qresource>
+  <qresource prefix="prefijoNuevo">
+    <file>samurai-60.png</file>
   </qresource>
 </RCC>

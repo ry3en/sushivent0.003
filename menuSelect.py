@@ -17,24 +17,44 @@ class menuSc_Dialog(object):
         Dialog.resize(407, 300)
         self.list_menu_selec = QtWidgets.QListWidget(Dialog)
         self.list_menu_selec.setGeometry(QtCore.QRect(15, 71, 371, 161))
+        self.list_menu_selec.setStyleSheet("border-radius: 15px;\n"
+                                           "")
         self.list_menu_selec.setObjectName("list_menu_selec")
         self.pushButton__act = QtWidgets.QPushButton(Dialog)
         self.pushButton__act.setGeometry(QtCore.QRect(80, 250, 251, 31))
+        self.pushButton__act.setStyleSheet("border-radius: 15px;\n"
+                                           "background-color:rgb(226, 230, 234)")
         self.pushButton__act.setObjectName("pushButton__act")
         self.line_se_menu = QtWidgets.QLineEdit(Dialog)
         self.line_se_menu.setGeometry(QtCore.QRect(20, 20, 321, 31))
+        self.line_se_menu.setStyleSheet("border-radius: 15px;\n"
+                                        "")
         self.line_se_menu.setObjectName("line_se_menu")
+        self.line_cant = QtWidgets.QLineEdit(Dialog)
+        self.line_cant.setGeometry(QtCore.QRect(20, 250, 61, 31))
+        self.line_cant.setStyleSheet("border-radius: 15px;\n"              
+                                     "")
+        self.line_cant.setObjectName("line_cant")
+        self.line_cant.setPlaceholderText("cant.")
         self.pushButton_search = QtWidgets.QPushButton(Dialog)
         self.pushButton_search.setGeometry(QtCore.QRect(350, 20, 41, 31))
+        self.pushButton_search.setStyleSheet("border-radius: 15px;\n"
+                                             "background-color:rgb(226, 230, 234)")
         self.pushButton_search.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/search-50.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_search.setIcon(icon)
         self.pushButton_search.setObjectName("pushButton_search")
+        self.pushButton_search.clicked.connect(self.list_menu_selec.clear)
         self.pushButton_search.clicked.connect(self.menu_select)
-
+        self.pushButton__act.clicked.connect(self.add_food)
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "Menu"))
+        self.pushButton__act.setText(_translate("Dialog", "aceptar"))
 
     def menu_select(self):
         try:
@@ -58,17 +78,81 @@ class menuSc_Dialog(object):
                     i = 0
                     while i < len(result):
                         men = result[i][0]
-                        print(men)
                         self.list_menu_selec.addItem(result[i][0])
-                        print(i, "asd")
                         i += 1
                 else:
                     self.list_menu_selec.addItem("no hay en el menu")
         except mc.Error as e:
             print(e)
 
+    def add_food(self):
+        try:
+            dbconfig = {
+                'user': 'root',
+                'password': 'admin123',
+                'host': '127.0.0.1',
+                'database': 'hikaru'
+            }
+            row = self.list_menu_selec.currentRow()
+            cant = self.line_cant.text()
+            id = self.select_id_ord_act()
+            nm = self.select_nm_ord_act()
+            mydb = mc.connect(**dbconfig)
+            if row >=0:
+                nom = self.list_menu_selec.currentItem().text()
+                if cant == "":
+                    self.line_se_menu.setText("Ninguna cantidad especificada")
+                else:
+                    mycursor = mydb.cursor()
+                    query = "INSERT INTO hikaru.item_orden (nombre, cantidad, id_orden, mesa, estado) VALUES (%s,%s,%s,%s, DEFAULT)"
+                    values = (nom, cant, id, nm)
+                    mycursor.execute(query, values)
+                    mydb.commit()
+            else:
+                self.line_se_menu.setText("Ningun item seleccionado")
 
-    def retranslateUi(self, Dialog):
-        _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Menu"))
-        self.pushButton__act.setText(_translate("Dialog", "aceptar"))
+        except mc.Error as e:
+            print(e)
+
+    def select_id_ord_act(self):
+        try:
+            dbconfig = {
+                'user': 'root',
+                'password': 'admin123',
+                'host': '127.0.0.1',
+                'database': 'hikaru'
+            }
+            mydb = mc.connect(**dbconfig)
+            mycursor = mydb.cursor()
+
+            query = "SELECT id_orden FROM ordenes ORDER BY id_orden DESC"
+
+            mycursor.execute(query)
+            result = mycursor.fetchall()
+            row = result[0][0]
+
+        except mc.Error as e:
+            print(e)
+        return row
+
+    def select_nm_ord_act(self):
+        try:
+            dbconfig = {
+                'user': 'root',
+                'password': 'admin123',
+                'host': '127.0.0.1',
+                'database': 'hikaru'
+            }
+            mydb = mc.connect(**dbconfig)
+            mycursor = mydb.cursor()
+
+            query = "SELECT n_mesa FROM hikaru.ordenes ORDER BY id_orden DESC"
+
+            mycursor.execute(query)
+            result = mycursor.fetchall()
+            row = result[0][0]
+
+        except mc.Error as e:
+            print(e)
+        return row
+

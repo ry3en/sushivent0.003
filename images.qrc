@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/restaurant-menu-100.png</file>
+    <file>images/dining-room-100.png</file>
+    <file>images/inventory-100.png</file>
+    <file>images/ingredients-100.png</file>
+    <file>images/cash-100.png</file>
+    <file>images/japanese-64.png</file>
+    <file>images/samurai-60.png</file>
     <file>images/order-history-64.png</file>
     <file>images/edit-64.png</file>
     <file>images/create-recipment-64.png</file>

@@ -14,7 +14,6 @@ from datetime import datetime
 from mainGuiDemo import Ui_MainWindow
 from menuSelect import menuSc_Dialog
 
-
 class New_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
@@ -26,49 +25,66 @@ class New_Dialog(object):
         Dialog.setSizePolicy(sizePolicy)
         self.line_pripl = QtWidgets.QLineEdit(Dialog)
         self.line_pripl.setGeometry(QtCore.QRect(30, 100, 491, 31))
+        self.line_pripl.setStyleSheet("border-radius: 15px;")
         self.line_pripl.setObjectName("line_pripl")
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(30, 80, 121, 21))
         self.label_2.setObjectName("label_2")
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(530, 100, 41, 31))
+        self.pushButton.setStyleSheet("border-radius: 15px;\n"
+"background-color:rgb(226, 230, 234)")
         self.pushButton.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/search-50.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton.setIcon(icon)
+        self.pushButton.setIcon(QIcon(QPixmap("images/search-50")))
         self.pushButton.setObjectName("pushButton")
         self.list_orden = QtWidgets.QListWidget(Dialog)
         self.list_orden.setGeometry(QtCore.QRect(30, 140, 511, 281))
+        self.list_orden.setStyleSheet("border-radius: 15px;\n"
+"")
         self.list_orden.setObjectName("list_orden")
         self.pushButton_create = QtWidgets.QPushButton(Dialog)
         self.pushButton_create.setGeometry(QtCore.QRect(100, 430, 371, 41))
+        self.pushButton_create.setStyleSheet("border-radius: 15px;\n"
+"background-color:rgb(226, 230, 234)")
+        self.pushButton_create.setCheckable(False)
         self.pushButton_create.setObjectName("pushButton_create")
-        self.pushButton_create.clicked.connect(self.crear_orden)
         self.label_3 = QtWidgets.QLabel(Dialog)
-        self.label_3.setGeometry(QtCore.QRect(30, 20, 121, 21))
+        self.label_3.setGeometry(QtCore.QRect(20, 20, 101, 21))
         self.label_3.setObjectName("label_3")
         self.line_nm = QtWidgets.QLineEdit(Dialog)
         self.line_nm.setGeometry(QtCore.QRect(30, 40, 121, 31))
+        self.line_nm.setStyleSheet("border-radius: 15px;")
         self.line_nm.setObjectName("line_nm")
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(177, 15, 71, 61))
-        self.label.setObjectName("label")
+        self.label_ok = QtWidgets.QLabel(Dialog)
+        self.label_ok.setGeometry(QtCore.QRect(177, 15, 71, 61))
+        self.label_ok.setObjectName("label_ok")
         self.label_user = QtWidgets.QLabel(Dialog)
-        self.label_user.setGeometry(QtCore.QRect(480, 20, 71, 31))
+        self.label_user.setGeometry(QtCore.QRect(430, 30, 101, 31))
+        self.label_user.setStyleSheet("border-radius: 15px;\n"
+"background-color:rgb(226, 230, 234)")
         self.label_user.setText("")
         self.label_user.setObjectName("label_user")
-        self.retranslateUi(Dialog)
+        self.label_user_img = QtWidgets.QLabel(Dialog)
+        self.label_user_img.setGeometry(QtCore.QRect(370, 10, 71, 61))
+        self.label_user_img.setObjectName("label_user_img")
+        self.pushButton.clicked.connect(self.list_orden.clear)
+        self.pushButton.clicked.connect(self.crear_orden)
         self.pushButton.clicked.connect(self.add_menu_or)
+        self.pushButton.clicked.connect(self.select_item_orden)
+
+        self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Añadir platillo"))
-        self.label.setPixmap(QPixmap("images/ok-30.png"))
         self.label_2.setText(_translate("Dialog", "<html><head/><body><p>Buscar plato</p></body></html>"))
-
         self.pushButton_create.setText(_translate("Dialog", "Crear"))
         self.label_3.setText(_translate("Dialog", "<html><head/><body><p>Numero de mesa</p></body></html>"))
+        self.label_ok.setText(_translate("Dialog", "<html><head/><body><p><img src=\":/images/sushi-60.png\"/></p></body></html>"))
+        self.label_user_img.setPixmap(QPixmap("images/japanese-64"))
 
     def add_menu_or(self):
         loged = self.is_log()
@@ -95,12 +111,46 @@ class New_Dialog(object):
             query = "SELECT is_log FROM users WHERE username like '" + user + "'"
             mycursor.execute(query)
             result = mycursor.fetchone()
-            loged = result[0]
+            if result == None:
+                loged = "off"
+
+            else:
+                loged = result[0]
+                print(result[0])
         except mc.Error as e:
             print(e)
         return loged
 
+    def crear_orden_menu(self):
+        loged = self.is_log()
+        if loged == 'on':
+            try:
+                dbconfig = {
+                    'user': 'root',
+                    'password': 'admin123',
+                    'host': '127.0.0.1',
+                    'database': 'hikaru'
+                }
 
+                ui = Ui_MainWindow()
+                now = datetime.now()
+                formatted_date = now.strftime('%Y-%m-%d %H:%M:%S')
+                user = self.label_user.text()
+                nm = self.line_nm.text()
+
+                mydb = mc.connect(**dbconfig)
+                mycursor = mydb.cursor()
+
+                query = "INSERT INTO hikaru.ordenes (username, datetime, n_mesa, total, estado) VALUES (%s, %s, %s, null, DEFAULT)"
+                values = (user, formatted_date, nm)
+                mycursor.execute(query, values)
+                mydb.commit()
+                self.label_ok.setPixmap(QPixmap("images/ok-30.png"))
+
+            except mc.Error as e:
+                print(e)
+        else:
+            print("not loged")
 
     def crear_orden(self):
         loged = self.is_log()
@@ -133,3 +183,67 @@ class New_Dialog(object):
         else:
             print("not loged")
 
+    def select_data_ord_act(self):
+        loged = self.is_log()
+        if loged == 'on':
+            try:
+                dbconfig = {
+                    'user': 'root',
+                    'password': 'admin123',
+                    'host': '127.0.0.1',
+                    'database': 'hikaru'
+                }
+                mydb = mc.connect(**dbconfig)
+                mycursor = mydb.cursor()
+                user = self.label_user.text()
+
+                query = "SELECT * FROM hikaru.ordenes ORDER BY id_orden DESC"
+
+                mycursor.execute(query)
+                result = mycursor.fetchall()
+                row = result[0][0]
+                print(row)
+
+            except mc.Error as e:
+                print(e)
+
+        else:
+            print(loged)
+            print("not loged")
+
+        return row
+
+
+    def select_item_orden(self):
+        loged = self.is_log()
+        if loged == 'on':
+            try:
+                dbconfig = {
+                    'user': 'root',
+                    'password': 'admin123',
+                    'host': '127.0.0.1',
+                    'database': 'hikaru'
+                }
+                mydb = mc.connect(**dbconfig)
+                mycursor = mydb.cursor()
+                nm = self.line_nm.text()
+                id = self.select_data_ord_act()
+                orden = str(id)
+
+                query = "SELECT nombre, cantidad FROM item_orden WHERE id_orden like '" + orden + "' and estado like '0'"
+                mycursor.execute(query)
+                result = mycursor.fetchall()
+                if len(result) >= 0:
+                    for i in range(len(result)):
+                        men = result[i][0]
+                        print("asd"+men)
+                        self.list_orden.addItem(result[i][0] + "     cant: '"+str( result[i][1])+"'")
+                        i += 1
+                else:
+                    self.list_orden.addItem("no hay nada en el menu")
+
+            except mc.Error as e:
+                print(e)
+        else:
+            print(loged)
+            print("not loged")
